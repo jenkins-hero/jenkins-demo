@@ -1,7 +1,7 @@
 plugins {
     id 'base'
-    id 'com.palantir.docker' version '0.22.1'
-    id 'com.palantir.docker-run' version '0.22.1'
+    id 'com.palantir.docker' version '0.25.0'
+    id 'com.palantir.docker-run' version '0.25.0'
     id 'pl.allegro.tech.build.axion-release' version '1.10.1'
 }
 
@@ -18,4 +18,5 @@ dockerRun {
     ports '8080:8080'
     clean true
     daemonize false
+    arguments '-v', '//var/run/docker.sock:/var/run/docker.sock'
 }
