@@ -17,6 +17,8 @@ apt-get update && \
 apt-get -y install docker-ce
 RUN usermod -a -G docker jenkins
 
+USER jenkins
+
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
