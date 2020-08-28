@@ -14,9 +14,11 @@ branch ([YouTube video](https://youtu.be/sCcuUMn1vdM) | [article](https://tomgre
 `./gradlew docker dockerRun`
 
 #build and run
-'./gradlew build docker dockerRun'
+./gradlew build docker dockerRun
 
 Jenkins will then be available at [http://localhost:8080](http://localhost:8080).
 
 
 https://medium.com/facademy/setup-jenkins-for-private-repository-9060f54eeac9
+
+/Users/<username>/.ssh/ is where keys typically are
