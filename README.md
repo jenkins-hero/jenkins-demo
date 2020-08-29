@@ -18,7 +18,26 @@ branch ([YouTube video](https://youtu.be/sCcuUMn1vdM) | [article](https://tomgre
 
 Jenkins will then be available at [http://localhost:8080](http://localhost:8080).
 
+AFter initial run will create a volume, use the volume ID here to reboot with changes (after shutdown):
+
+docker container run -d -p 8082:8080 -v  <docker original volume>:/var/jenkins_home --name jenkins-local jenkins/jenkins:lts
+
+find original volume with docker volume ls
+
+Access with http://localhost:8082
+
+
+
 
 https://medium.com/facademy/setup-jenkins-for-private-repository-9060f54eeac9
 
 /Users/<username>/.ssh/ is where keys typically are
+
+eval $(envkey-source)
+
+https://www.baeldung.com/ops/jenkins-environment-variables
+
+
+
+
+
