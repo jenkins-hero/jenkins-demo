@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.225
+FROM jenkins/jenkins:2.249.1-jdk11
 
 USER root
 RUN curl -sSL https://get.docker.com/ | sh
