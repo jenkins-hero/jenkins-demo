@@ -3,4 +3,4 @@ job-dsl:1.77
 workflow-aggregator:2.6
 git:4.2.2
 aws-credentials:1.28
-pipeline-aws:1.41
+pipeline-aws:1.42
