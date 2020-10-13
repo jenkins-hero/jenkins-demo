@@ -13,5 +13,7 @@ build
 
 secretgitkey.txt
 
+volume/*
+
 .idea/
 >>>>>>> b6f993bdce70533ce731906bd09f025a9a5a58e9

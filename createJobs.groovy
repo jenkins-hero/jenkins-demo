@@ -4,7 +4,7 @@ pipelineJob('gingerauthenticator-job') {
             scm {
                 git {
                     remote {
-                        url 'git@github.com:jtjoa/onboardapi.git'
+                        url 'git@github.com:jtjoa/GingerNASPBackEnd.git'
                     }
                     branch 'master'
                 }
