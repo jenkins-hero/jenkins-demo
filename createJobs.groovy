@@ -15,7 +15,7 @@ pipelineJob('theme-park-job') {
                     remote {
                         url 'https://github.com/DavidBraun777/tomGregorySpringBootAppWJenkins.git'
                     }
-                    branch 'main'
+                    branch 'master'
                 }
             }
         }
