@@ -16,6 +16,7 @@ pipelineJob('theme-park-job') {
                         url 'https://github.com/DavidBraun777/tomGregorySpringBootAppWJenkins.git'
                     }
                     branch 'master'
+                    scriptPath('Jenkinsfile-docker')
                 }
             }
         }
