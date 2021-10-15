@@ -1,8 +1,10 @@
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
+
 plugins {
     id 'base'
-    id 'com.palantir.docker' version '0.26.0'
-    id 'com.palantir.docker-run' version '0.26.0'
-    id 'pl.allegro.tech.build.axion-release' version '1.12.0'
+    id 'com.palantir.docker' version '0.30.0'
+    id 'com.palantir.docker-run' version '0.30.0'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.3'
 }
 
 project.version = scmVersion.version
@@ -12,10 +14,51 @@ docker {
     files "plugins.txt", "seedJob.xml"
 }
 
-dockerRun {
-    name "${project.name}"
-    image "${project.name}:${project.version}"
-    ports '8080:8080'
-    clean true
-    daemonize false
+Process process
+if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
+    process = "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock alpine stat -c %g /var/run/docker.sock".execute()
+} else if (DefaultNativePlatform.getCurrentOperatingSystem().isLinux()) {
+    process = "stat -c %g /var/run/docker.sock".execute()
+} else if (DefaultNativePlatform.getCurrentOperatingSystem().isMacOsX()) {
+    process = "stat -c %g /var/run/docker.sock".execute()
+} else {
+    throw new GradleException("Unsupported operating system. No way to find group of /var/run/docker.sock.")
+}
+
+def out = new ByteArrayOutputStream()
+process.waitForProcessOutput(out, System.err)
+String dockerSockGroupId = out.toString().trim()
+print(dockerSockGroupId)
+
+if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
+    String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isWindows() ? '/' : ''
+    dockerRun {
+        name "${project.name}"
+        image "${project.name}:${project.version}"
+        ports '8080:8080'
+        clean true
+        daemonize false
+        arguments '-v', "$extraPrefix/var/run/docker.sock:/var/run/docker.sock", '--group-add', dockerSockGroupId
+    }
+} else if (DefaultNativePlatform.getCurrentOperatingSystem().isLinux()) {
+    String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isLinux() ? '/' : ''
+    dockerRun {
+        name "${project.name}"
+        image "${project.name}:${project.version}"
+        ports '8080:8080'
+        clean true
+        daemonize false
+        arguments '-v', "$extraPrefix/var/run/docker.sock:/var/run/docker.sock", '--group-add', "jenkins"
+    }
+} else {
+    // this is the section for MacOs
+    String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isMacOsX() ? '/' : ''
+    dockerRun {
+        name "${project.name}"
+        image "${project.name}:${project.version}"
+        ports '8080:8080'
+        clean true
+        daemonize false
+        arguments '-v', "$extraPrefix/var/run/docker.sock:/var/run/docker.sock", '--group-add', "jenkins"
+    }
 }
