@@ -30,16 +30,6 @@ process.waitForProcessOutput(out, System.err)
 String dockerSockGroupId = out.toString().trim()
 print(dockerSockGroupId)
 
-// String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isWindows() ? '/' : ''
-// dockerRun {
-//     name "${project.name}"
-//     image "${project.name}:${project.version}"
-//     ports '8080:8080'
-//     clean true
-//     daemonize false
-//     arguments '-v', "$extraPrefix/var/run/docker.sock:/var/run/docker.sock", '--group-add', dockerSockGroupId
-// }
-
 if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
     String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isWindows() ? '/' : ''
     dockerRun {
@@ -61,7 +51,7 @@ if (DefaultNativePlatform.getCurrentOperatingSystem().isWindows()) {
         arguments '-v', "$extraPrefix/var/run/docker.sock:/var/run/docker.sock", '--group-add', "jenkins"
     }
 } else {
-    // OS is mac OS
+    // this is the section for MacOs
     String extraPrefix = DefaultNativePlatform.getCurrentOperatingSystem().isMacOsX() ? '/' : ''
     dockerRun {
         name "${project.name}"
