@@ -14,3 +14,6 @@ branch ([YouTube video](https://youtu.be/sCcuUMn1vdM) | [article](https://tomgre
 `./gradlew docker dockerRun`
 
 Jenkins will then be available at [http://localhost:8080](http://localhost:8080).
+
+## Need further support?
+Contact me if you need help at tom@tomgregory.com.
