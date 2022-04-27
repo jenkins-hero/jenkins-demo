@@ -1,3 +1,5 @@
+[![CI](https://github.com/tkgregory/jenkins-demo/actions/workflows/gradle.yml/badge.svg)](https://github.com/tkgregory/jenkins-demo/actions/workflows/gradle.yml)
+
 Repository to accompany the following tutorials: 
 
 * *How to bootstrap Jenkins for disaster recovery and accountability* on the [master](https://github.com/tkgregory/jenkins-demo) branch 
