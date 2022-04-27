@@ -1,4 +1,4 @@
-Repository to go along with the following tutorials: 
+Repository to accompany the following tutorials: 
 
 * *How to bootstrap Jenkins for disaster recovery and accountability* on the [master](https://github.com/tkgregory/jenkins-demo) branch 
 ([YouTube video](https://youtu.be/s7dw0ahriQY))
