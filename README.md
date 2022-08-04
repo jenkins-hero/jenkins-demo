@@ -1,4 +1,6 @@
-Repository to go along with the following tutorials: 
+[![CI](https://github.com/tkgregory/jenkins-demo/actions/workflows/gradle.yml/badge.svg)](https://github.com/tkgregory/jenkins-demo/actions/workflows/gradle.yml)
+
+Repository to accompany the following tutorials: 
 
 * *How to bootstrap Jenkins for disaster recovery and accountability* on the [master](https://github.com/tkgregory/jenkins-demo) branch 
 ([YouTube video](https://youtu.be/s7dw0ahriQY))
@@ -14,3 +16,6 @@ branch ([YouTube video](https://youtu.be/sCcuUMn1vdM) | [article](https://tomgre
 `./gradlew docker dockerRun`
 
 Jenkins will then be available at [http://localhost:8080](http://localhost:8080).
+
+## Need further support?
+Contact me if you need help at tom@tomgregory.com.
