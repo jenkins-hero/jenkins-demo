@@ -1,4 +1,4 @@
 authorize-project:1.4.0
-job-dsl:1.78.1
-workflow-aggregator:2.6
-git:4.10.0
+job-dsl:1.81
+workflow-aggregator:590.v6a_d052e5a_a_b_5
+git:4.11.4
